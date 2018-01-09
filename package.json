@@ -1,0 +1,30 @@
+{
+  "name": "melipayamak-api",
+  "version": "0.1.0",
+  "description": "Melipayamak Nodejs samples code",
+  "main": "./index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Melipayamak/melipayamak-node.git"
+  },
+  "keywords": [
+    "SMS",
+    "Melipayamak"
+  ],
+  "author": "Ara Code It <ahnara92@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Melipayamak/melipayamak-node/issues"
+  },
+  "dependencies": {
+    "soap": "^0.23.0"
+  },
+  "homepage": "https://github.com/Melipayamak/melipayamak-node#readme",
+  "devDependencies": {}
+}
