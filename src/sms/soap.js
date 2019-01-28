@@ -53,6 +53,15 @@ class Soap extends BaseSoap
             isflash,
             domainName});                
     }
+    sendByBaseNumber(text, to, bodyId)
+    {
+        let funcName = Array.isArray(text) ? "sendByBaseNumber" : "sendByBaseNumber2";
+        return this.execute(this.sendUrl, funcName,{
+            ...this.data,
+            text,
+            to,
+            bodyId});        
+    }
     getMessages(location,index,count,from='')
     {
         return this.execute(this.sendUrl,"getMessages",{
