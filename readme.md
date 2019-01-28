@@ -142,6 +142,13 @@ smsSoap.send(to,from,text,isFlash);
 ```
 * در وب سرویس soap به جای ارسال یک شماره آرایه ای از شماره ها نیز قابل قبول است
 
+#### ارسال از خط خدماتی اشتراکی
+
+```js
+smsRest.sendByBaseNumber(text, to, bodyId);
+smsSoap.sendByBaseNumber(text, to, bodyId);
+```
+
 #### دریافت وضعیت ارسال
 ```js
 smsRest.isDelivered(recId);
