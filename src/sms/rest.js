@@ -50,6 +50,12 @@ class Rest extends Base
             to,from:from,text,isFlash
         });
     }
+    sendByBaseNumber(text, to, bodyId)
+    {
+        return this.request('BaseServiceNumber',{
+            text, to, bodyId
+        });
+    }
     isDelivered(recId)
     {
         return this.request('GetDeliveries2',{
