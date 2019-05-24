@@ -131,6 +131,26 @@ class Soap extends BaseSoap
             ...this.data,
             isRead});
     }
+    sendBulkSpeechText(title, body, receivers, DateToSend, repeatCount)
+    {
+        return this.execute(this.voiceUrl,"SendBulkSpeechText",{
+            ...this.data,
+            title,
+            body,
+            receivers,
+            DateToSend,
+            repeatCount});
+    }
+    sendBulkVoiceSMS(title, voiceFileId, receivers, DateToSend, repeatCount)
+    {
+        return this.execute(this.voiceUrl,"SendBulkVoiceSMS",{
+            ...this.data,
+            title,
+            voiceFileId,
+            receivers,
+            DateToSend,
+            repeatCount});
+    }
     sendWithSpeech(to,from,smsBody,speechBody)
     {
         return this.execute(this.voiceUrl,"SendSMSWithSpeechText",{
@@ -155,6 +175,13 @@ class Soap extends BaseSoap
         return this.execute(this.voiceUrl,"GetSendSMSWithSpeechTextStatus",{
             ...this.data,
             recId});
+    }
+    UploadVoiceFile(title, base64StringFile)
+    {
+        return this.execute(this.voiceUrl,"UploadVoiceFile",{
+            ...this.data,
+            title,
+            base64StringFile});
     }
     getMultiDelivery(recId)
     {
