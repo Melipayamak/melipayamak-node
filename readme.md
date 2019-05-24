@@ -232,6 +232,7 @@ smsSoap.getScheduleStatus(schId);
 smsSoap.removeSchedule(schId);
 ```
 
+### وب سرویس پیامک صوتی
 
 ####  ارسال پیامک همراه با تماس صوتی
 ```js
@@ -247,6 +248,22 @@ smsSoap.sendWithSpeechSchduleDate(to,from,text,speech,scheduleDate);
 ```js
 smsSoap.getSendWithSpeech(recId);
 ```
+
+#### تماس انبوه زماندار
+```js
+smsSoap.sendBulkSpeechText(title, body, receivers, DateToSend, repeatCount);
+```
+
+#### تماس انبوه زماندار با انتخاب فایل
+```js
+smsSoap.sendBulkVoiceSMS(title, voiceFileId, receivers, DateToSend, repeatCount);
+```
+
+#### آپلود فایل صوتی
+```js
+smsSoap.UploadVoiceFile(title, base64StringFile);
+```
+
 ### وب سرویس ارسال انبوه/منطقه ای
 
 #### دریافت شناسه شاخه های بانک شماره
