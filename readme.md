@@ -145,7 +145,6 @@ smsSoap.send(to,from,text,isFlash);
 #### ارسال از خط خدماتی اشتراکی
 
 ```js
-smsRest.sendByBaseNumber(text, to, bodyId);
 smsSoap.sendByBaseNumber(text, to, bodyId);
 ```
 
