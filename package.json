@@ -1,7 +1,7 @@
 {
   "name": "melipayamak-api",
-  "version": "0.1.0",
-  "description": "Melipayamak Nodejs samples code",
+  "version": "1.0.0",
+  "description": "Melipayamak Nodejs Wrapper",
   "main": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,9 +15,10 @@
   },
   "keywords": [
     "SMS",
-    "Melipayamak"
+    "Melipayamak",
+    "Async"
   ],
-  "author": "Ara Code It <ahnara92@gmail.com>",
+  "author": "Amirhossein Mehrvarzi <melipayamak@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Melipayamak/melipayamak-node/issues"
