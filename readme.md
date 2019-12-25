@@ -22,22 +22,18 @@
 
 
 ```js
-npm install melipayamak-api 
+npm install melipayamak
 ```
 
 
 <div dir='rtl'>
-
 یا از طریق اضافه کردن خط زیر به فایل 
 package.json
-
-
-
 </div>
 
 
 ```json
-"melipayamak-api": "*"
+"melipayamak": "1.0.1"
 ```
 
 
@@ -51,8 +47,6 @@ package.json
 </div>
 
     npm update
-
-
 	
 <div dir='rtl'>
 
@@ -97,6 +91,26 @@ const MelipayamakApi = require('melipayamak-api')
 const smsRest = api.sms();
 const smsSoap = api.sms('soap');
 // وب سرویس تیکت پشتیبانی
+const ticket = api.ticketAsync();
+// وب سرویس برای مدیریت کامل  ارسال انبوه پیامک
+const branch = api.branchAsync();
+//وب سرویس کاربران
+const users = api.usersAsync();
+//وب سرویس دفترچه تلفن
+const contacts = api.contactsAsync();
+
+```
+
+<div dir='rtl'>
+#### حالت سنکرون
+برای استفاده از وب سرویس در حالت سنکرون به صورت زیر استفاده کنید :
+</div>
+
+```js
+// وب سرویس پیامک
+const smsRestSync = api.sms('rest', 'sync');
+const smsSoapSync = api.sms('soap', 'sync');
+// وب سرویس تیکت پشتیبانی
 const ticket = api.ticket();
 // وب سرویس برای مدیریت کامل  ارسال انبوه پیامک
 const branch = api.branch();
@@ -104,9 +118,7 @@ const branch = api.branch();
 const users = api.users();
 //وب سرویس دفترچه تلفن
 const contacts = api.contacts();
-
 ```
-
 
 <div dir='rtl'>
 
