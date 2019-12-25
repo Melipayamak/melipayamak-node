@@ -1,13 +1,13 @@
 var BaseSoap = require('./baseSoap');
 
-class Branch extends BaseSoap {
+class BranchAsync extends BaseSoap {
     
     constructor(username, password) {
         super(username, password);
         this.path = 'http://api.payamak-panel.com/post/Actions.asmx?wsdl'
     }
     execute(funcName, params) {
-        return super.execute(this.path, funcName, params);
+        return super.executeAsync(this.path, funcName, params);
     }
     get(owner) {
         return this.execute('GetBranchs', {
@@ -116,4 +116,4 @@ class Branch extends BaseSoap {
         });
     }
 }
-module.exports = Branch;
+module.exports = BranchAsync;

@@ -5,7 +5,7 @@ class Base
         this.username = username;
         this.password = password;
         this.data = {
-            username,password
+            username, password
         };
     }
 }

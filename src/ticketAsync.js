@@ -1,13 +1,13 @@
 var BaseSoap = require('./baseSoap');
 
-class Ticket extends BaseSoap {
+class TicketAsync extends BaseSoap {
     
     constructor(username, password) {
         super(username, password);
         this.path = 'http://api.payamak-panel.com/post/Tickets.asmx?wsdl'
     }
     execute(funcName, params) {
-        return super.execute(this.path, funcName, params);
+        return super.executeAsync(this.path, funcName, params);
     }
     add(title, content, alertWithSms = true) {
         return this.execute('AddTicket', {
@@ -55,4 +55,4 @@ class Ticket extends BaseSoap {
         });
     }
 }
-module.exports = Ticket;
+module.exports = TicketAsync;

@@ -1,13 +1,13 @@
 var BaseSoap = require('./baseSoap');
 
-class Contacts extends BaseSoap {
+class ContactsAsync extends BaseSoap {
     
     constructor(username, password) {
         super(username, password);
         this.path = 'http://api.payamak-panel.com/post/contacts.asmx?wsdl'
     }
     execute(funcName, params) {
-        return super.execute(this.path, funcName, params);
+        return super.executeAsync(this.path, funcName, params);
     }
     addGroup(groupName, Descriptions, showToChilds) {
         return this.execute('AddGroup', {
@@ -60,4 +60,4 @@ class Contacts extends BaseSoap {
         });
     }
 }
-module.exports = Contacts;
+module.exports = ContactsAsync;
