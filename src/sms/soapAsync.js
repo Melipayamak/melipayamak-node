@@ -1,6 +1,6 @@
 var BaseSoap = require('../baseSoap');
 
-class Soap extends BaseSoap {
+class SoapAsync extends BaseSoap {
 
     constructor(username, password) {
         super(username, password);
@@ -11,7 +11,7 @@ class Soap extends BaseSoap {
     }
 
     getCredit() {
-        return this.execute(this.sendUrl, 'GetCredit', this.data);
+        return this.executeAsync(this.sendUrl, 'GetCredit', this.data);
     }
 
     isDelivered(id) {
@@ -19,7 +19,7 @@ class Soap extends BaseSoap {
             'recId': id
         }
         let funcName = Array.isArray(id) ? "GetDeliveries3" : "GetDelivery2";
-        return this.execute(this.sendUrl, funcName, {
+        return this.executeAsync(this.sendUrl, funcName, {
             ...this.data,
             ...data
         });
@@ -27,7 +27,7 @@ class Soap extends BaseSoap {
 
     send(to, from, text, isflash = false) {
         let funcName = Array.isArray(to) ? "SendSimpleSMS" : "SendSimpleSMS2";
-        return this.execute(this.sendUrl, funcName, {
+        return this.executeAsync(this.sendUrl, funcName, {
             ...this.data,
             to,
             from: from,
@@ -38,7 +38,7 @@ class Soap extends BaseSoap {
 
     send2(to, from, text, isflash = false, udh = "") {
         let _to = Array.isArray(to) ? to : [to];
-        return this.execute(this.sendUrl, "SendSms", {
+        return this.executeAsync(this.sendUrl, "SendSms", {
             ...this.data,
             _to,
             from: from,
@@ -49,7 +49,7 @@ class Soap extends BaseSoap {
     }
 
     sendWithDomain(to, from, text, isflash, domainName) {
-        return this.execute(this.sendUrl, "SendWithDomain", {
+        return this.executeAsync(this.sendUrl, "SendWithDomain", {
             ...this.data,
             to,
             from: from,
@@ -60,7 +60,7 @@ class Soap extends BaseSoap {
     }
 
     getMessages(location, index, count, from = '') {
-        return this.execute(this.sendUrl, "getMessages", {
+        return this.executeAsync(this.sendUrl, "getMessages", {
             ...this.data,
             location,
             index,
@@ -70,7 +70,7 @@ class Soap extends BaseSoap {
     }
 
     getMessagesStr(location, index, count, from = '') {
-        return this.execute(this.receiveUrl, "GetMessageStr", {
+        return this.executeAsync(this.receiveUrl, "GetMessageStr", {
             ...this.data,
             location,
             index,
@@ -80,7 +80,7 @@ class Soap extends BaseSoap {
     }
 
     getMessagesByDate(location, index, count, from, dateFrom, dateTo) {
-        return this.execute(this.receiveUrl, "GetMessagesByDate", {
+        return this.executeAsync(this.receiveUrl, "GetMessagesByDate", {
             ...this.data,
             location,
             index,
@@ -90,9 +90,8 @@ class Soap extends BaseSoap {
             from: from
         });
     }
-
     getMessagesReceptions(msgId, fromRows) {
-        return this.execute(this.receiveUrl, "GetMessagesReceptions", {
+        return this.executeAsync(this.receiveUrl, "GetMessagesReceptions", {
             ...this.data,
             msgId,
             fromRows
@@ -100,7 +99,7 @@ class Soap extends BaseSoap {
     }
 
     getUsersMessagesByDate(location, index, count, from, dateFrom, dateTo) {
-        return this.execute(this.receiveUrl, "GetUsersMessagesByDate", {
+        return this.executeAsync(this.receiveUrl, "GetUsersMessagesByDate", {
             ...this.data,
             location,
             index,
@@ -112,14 +111,14 @@ class Soap extends BaseSoap {
     }
 
     remove(msgIds) {
-        return this.execute(this.receiveUrl, "RemoveMessages2", {
+        return this.executeAsync(this.receiveUrl, "RemoveMessages2", {
             ...this.data,
             msgIds
         });
     }
 
     getPrice(irancellCount, mtnCount, from, text) {
-        return this.execute(this.sendUrl, "GetSmsPrice", {
+        return this.executeAsync(this.sendUrl, "GetSmsPrice", {
             ...this.data,
             irancellCount,
             mtnCount,
@@ -129,14 +128,14 @@ class Soap extends BaseSoap {
     }
 
     getInboxCount(isRead = false) {
-        return this.execute(this.sendUrl, "GetInboxCount", {
+        return this.executeAsync(this.sendUrl, "GetInboxCount", {
             ...this.data,
             isRead
         });
     }
 
     sendWithSpeech(to, from, smsBody, speechBody) {
-        return this.execute(this.voiceUrl, "SendSMSWithSpeechText", {
+        return this.executeAsync(this.voiceUrl, "SendSMSWithSpeechText", {
             ...this.data,
             to,
             from: from,
@@ -146,7 +145,7 @@ class Soap extends BaseSoap {
     }
 
     sendWithSpeechSchduleDate(to, from, smsBody, speechBody, scheduleDate) {
-        return this.execute(this.voiceUrl, "SendSMSWithSpeechTextBySchduleDate", {
+        return this.executeAsync(this.voiceUrl, "SendSMSWithSpeechTextBySchduleDate", {
             ...this.data,
             to,
             from: from,
@@ -157,21 +156,21 @@ class Soap extends BaseSoap {
     }
 
     getSendWithSpeech(recId) {
-        return this.execute(this.voiceUrl, "GetSendSMSWithSpeechTextStatus", {
+        return this.executeAsync(this.voiceUrl, "GetSendSMSWithSpeechTextStatus", {
             ...this.data,
             recId
         });
     }
 
     getMultiDelivery(recId) {
-        return this.execute(this.sendUrl, "GetMultiDelivery2", {
+        return this.executeAsync(this.sendUrl, "GetMultiDelivery2", {
             ...this.data,
             recId
         });
     }
 
     sendMultipleSchedule(to, from, text, isflash, scheduleDateTime, period) {
-        return this.execute(this.scheduleUrl, "AddMultipleSchedule", {
+        return this.executeAsync(this.scheduleUrl, "AddMultipleSchedule", {
             ...this.data,
             to,
             from: from,
@@ -183,7 +182,7 @@ class Soap extends BaseSoap {
     }
 
     sendSchedule(to, from, text, isflash, scheduleDateTime, period) {
-        return this.execute(this.scheduleUrl, "AddSchedule", {
+        return this.executeAsync(this.scheduleUrl, "AddSchedule", {
             ...this.data,
             to,
             from: from,
@@ -195,21 +194,21 @@ class Soap extends BaseSoap {
     }
 
     getScheduleStatus(scheduleId) {
-        return this.execute(this.scheduleUrl, "GetScheduleStatus", {
+        return this.executeAsync(this.scheduleUrl, "GetScheduleStatus", {
             ...this.data,
             scheduleId
         });
     }
 
     removeSchedule(scheduleId) {
-        return this.execute(this.scheduleUrl, "RemoveSchedule", {
+        return this.executeAsync(this.scheduleUrl, "RemoveSchedule", {
             ...this.data,
             scheduleId
         });
     }
     
     addUsance(to, from, text, isflash, scheduleStartDateTime, repeatAfterDays, scheduleEndDateTime) {
-        return this.execute(this.scheduleUrl, "AddUsance", {
+        return this.executeAsync(this.scheduleUrl, "AddUsance", {
             ...this.data,
             to,
             from: from,
@@ -223,4 +222,4 @@ class Soap extends BaseSoap {
 
 }
 
-module.exports = Soap;
+module.exports = SoapAsync;

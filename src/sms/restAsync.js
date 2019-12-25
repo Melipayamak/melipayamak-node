@@ -3,44 +3,47 @@ var https = require('https');
 var querystring = require('querystring');
 
 
-class Rest extends Base {
+class RestAsync extends Base {
     
     constructor(username, password) {
         super(username, password);
-    }
-
-    request(method, params) {
-        let data = Object.assign({}, this.data, params);
-        var postdata = querystring.stringify(data);
-
-        var options = {
+        this.options = {
             host: 'rest.payamak-panel.com',
-            port: 443,
-            path: `/api/SendSMS/${method}`,
+            path: 'api/SendSMS'
+        }
+    }
+    request(method, params) {
+        var path = `https://${this.options.host}/${this.options.path}/${method}`;
+        params = Object.assign({}, this.data, params);
+        var postdata = querystring.stringify(params);
+        var post_options = {
+            host: this.options.host,
+            port: '443',
+            path: path,
             method: 'POST',
             headers: {
                 'Content-Length': postdata.length,
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
             }
         };
-
-        var req = https.request(options, function(res) {
-            console.log('STATUS: ' + res.statusCode);
-            res.setEncoding('utf8');
-            res.on('data', function(chunk) {
-                console.log(chunk);
+        return new Promise((resolve, reject) => {
+            var req = https.request(post_options, function(e) {
+                e.setEncoding('utf8');
+                e.on('data', function(data) {
+                    resolve(JSON.parse(data));
+                });
             });
+            req.write(postdata, "utf8");
+            req.on("error", function(e) {
+                reject(JSON.stringify({
+                    error: e.message
+                }));
+
+            });
+            req.end();
         });
 
-        req.on('error', function(e) {
-            console.log('problem with request: ' + e.message);
-        });
-
-        req.write(postdata, "utf8");
-        req.end();
     }
-
-
     send(to, from, text, isFlash = false) {
         return this.request('SendSMS', {
             to,
@@ -49,7 +52,6 @@ class Rest extends Base {
             isFlash
         });
     }
-
     sendByBaseNumber(text, to, bodyId) {
         return this.request('BaseServiceNumber', {
             text,
@@ -57,13 +59,11 @@ class Rest extends Base {
             bodyId
         });
     }
-
     isDelivered(recId) {
         return this.request('GetDeliveries2', {
             recId
         });
     }
-
     getMessages(location, index, count, from = '') {
         return this.request('GetMessages', {
             location,
@@ -71,19 +71,16 @@ class Rest extends Base {
             count
         });
     }
-
     getCredit() {
         return this.request('GetCredit', {});
     }
-
     getBasePrice() {
         return this.request('GetBasePrice', {});
     }
-    
     getNumbers() {
         return this.request('GetUserNumbers', {});
     }
 
 }
 
-module.exports = Rest;
+module.exports = RestAsync;
