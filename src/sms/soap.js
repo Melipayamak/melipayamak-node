@@ -40,7 +40,7 @@ class Soap extends BaseSoap {
         let _to = Array.isArray(to) ? to : [to];
         return this.execute(this.sendUrl, "SendSms", {
             ...this.data,
-            _to,
+            to: _to,
             from: from,
             text,
             isflash,
