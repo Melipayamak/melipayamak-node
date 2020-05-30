@@ -37,10 +37,10 @@ class SoapAsync extends BaseSoap {
     }
 
     send2(to, from, text, isflash = false, udh = "") {
-        let _to = Array.isArray(to) ? to : [to];
+        //to is array
         return this.executeAsync(this.sendUrl, "SendSms", {
             ...this.data,
-            _to,
+            to,
             from: from,
             text,
             isflash,
