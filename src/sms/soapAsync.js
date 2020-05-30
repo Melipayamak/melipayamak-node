@@ -25,8 +25,9 @@ class SoapAsync extends BaseSoap {
         });
     }
 
-    send(to, from, text, isflash = false) {
-        let funcName = Array.isArray(to) ? "SendSimpleSMS" : "SendSimpleSMS2";
+    send(_to, from, text, isflash = false) {
+        let funcName = Array.isArray(_to) ? "SendSimpleSMS" : "SendSimpleSMS2";
+        var to = Array.isArray(_to) ? [{'string': _to}] : _to;
         return this.executeAsync(this.sendUrl, funcName, {
             ...this.data,
             to,
@@ -36,8 +37,9 @@ class SoapAsync extends BaseSoap {
         });
     }
 
-    send2(to, from, text, isflash = false, udh = "") {
-        //to is array
+    send2(_to, from, text, isflash = false, udh = "") {
+        //_to is array
+        var to = [{'string': _to}];
         return this.executeAsync(this.sendUrl, "SendSms", {
             ...this.data,
             to,
