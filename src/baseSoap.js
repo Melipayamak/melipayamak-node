@@ -9,7 +9,7 @@ class BaseSoap extends Base {
             soap.createClientAsync(url).then((client) => {
                 return client[funcName + 'Async'](params);
             }).then((result) => {
-                returnResult ? resolve(result[funcName + 'Result']) : resolve(result);
+                returnResult ? resolve(result[0][funcName + 'Result']) : resolve(result[0]);
 
             }).catch(err => {
                 reject(err)
