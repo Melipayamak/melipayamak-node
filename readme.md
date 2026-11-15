@@ -41,7 +41,7 @@ npm install melipayamak
 
 
 ```json
-"melipayamak": "1.0.1"
+"melipayamak": "2.0.5"
 ```
 
 
@@ -95,7 +95,7 @@ sms.send(to,from,text).then(res=>{
 </div>
 
 ```js
-// وب سرویس پیامک
+
 const smsRest = api.sms();
 const smsSoap = api.sms('soap');
 // وب سرویس تیکت پشتیبانی
