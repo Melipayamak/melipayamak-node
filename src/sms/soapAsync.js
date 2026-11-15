@@ -247,6 +247,12 @@ class SoapAsync extends BaseSoap {
         });
     }
 
+    getOutBoxCount() {
+        return this.executeAsync(this.receiveUrl, 'GetOutBoxCount', {
+            ...this.data
+        });
+    }
+
 }
 
 module.exports = SoapAsync;

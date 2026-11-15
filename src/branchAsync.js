@@ -1,7 +1,7 @@
 var BaseSoap = require('./baseSoap');
 
 class BranchAsync extends BaseSoap {
-    
+
     constructor(username, password) {
         super(username, password);
         this.path = 'http://api.payamak-panel.com/post/Actions.asmx?wsdl'
@@ -113,6 +113,19 @@ class BranchAsync extends BaseSoap {
         return this.execute('UpdateBulkDelivery', {
             ...this.data,
             bulkId
+        });
+    }
+
+
+    getMultipleSMS3Deliveries(Id) {
+        return this.execute('GetMultipleSMS3Deliveries', {
+            ...this.data, Id
+        });
+    }
+
+    getSendBulk() {
+        return this.execute('GetSendBulk', {
+            ...this.data
         });
     }
 }

@@ -115,5 +115,17 @@ class Branch extends BaseSoap {
             bulkId
         });
     }
+
+    getMultipleSMS3Deliveries(Id){
+        return this.execute('GetMultipleSMS3Deliveries', {
+            ...this.data, Id
+        });
+    }
+
+    getSendBulk() {
+        return this.execute('GetSendBulk', {
+            ...this.data
+        });
+    }
 }
 module.exports = Branch;

@@ -248,6 +248,11 @@ class Soap extends BaseSoap {
         });
     }
 
+    getOutBoxCount() {
+        return this.execute(this.receiveUrl, 'GetOutBoxCount', {
+            ...this.data
+        });
+    }
     
 
 }
