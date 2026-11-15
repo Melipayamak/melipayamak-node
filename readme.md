@@ -3,8 +3,8 @@
 
 <!-- Project Status -->
 ![Status](https://img.shields.io/badge/status-active-success)
-![Version](https://img.shields.io/badge/version-2.0.0-blue)
-![Node.js](https://img.shields.io/badge/Node.js-20%2B-339933?logo=node.js&logoColor=white)
+![Version](https://img.shields.io/badge/version-2.0.2-blue)
+![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?logo=node.js&logoColor=white)
 ![NPM](https://img.shields.io/badge/npm-compatible-CB3837?logo=npm&logoColor=white)
 ![License](https://img.shields.io/github/license/melipayamak/melipayamak-node)
 
@@ -41,7 +41,7 @@ npm install melipayamak
 
 
 ```json
-"melipayamak": "2.0.5"
+"melipayamak": "2.0.2"
 ```
 
 
