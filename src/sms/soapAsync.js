@@ -278,6 +278,43 @@ class SoapAsync extends BaseSoap {
         });
     }
 
+
+    getSendSpeechTextStatus(recId) {
+        return this.executeAsync(this.scheduleUrl, 'GetSendSpeechTextStatus', {
+            ...this.data, recId
+        });
+    }
+
+    getSendSpeechTextStatuses(recIds) {
+        return this.executeAsync(this.scheduleUrl, 'GetSendSpeechTextStatuses', {
+            ...this.data, recIds
+        });
+    }
+
+    sendBulkSpeechText(title, body, receivers, DateToSend, RepeatCount) {
+        return this.executeAsync(this.scheduleUrl, 'SendBulkSpeechText', {
+            ...this.data, title, body, receivers, DateToSend, RepeatCount
+        });
+    }
+
+    sendBulkVoiceSMS(title, voiceFileId, receivers, DateToSend, repeatCount) {
+        return this.executeAsync(this.scheduleUrl, 'SendBulkVoiceSMS', {
+            ...this.data, title, voiceFileId, receivers, DateToSend, repeatCount
+        });
+    }
+
+    sendSpeechText(text, to) {
+        return this.executeAsync(this.scheduleUrl, 'SendSpeechText', {
+            ...this.data, text, to
+        });
+    }
+
+    sendVoiceOtp(to, code) {
+        return this.executeAsync(this.scheduleUrl, 'SendVoiceOtp', {
+            ...this.data, code, to
+        });
+    }
+
 }
 
 module.exports = SoapAsync;

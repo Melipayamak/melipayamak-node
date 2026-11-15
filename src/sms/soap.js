@@ -279,6 +279,43 @@ class Soap extends BaseSoap {
         });
     }
 
+
+    getSendSpeechTextStatus(recId) {
+        return this.execute(this.scheduleUrl, 'GetSendSpeechTextStatus', {
+            ...this.data, recId
+        });
+    }
+
+    getSendSpeechTextStatuses(recIds) {
+        return this.execute(this.scheduleUrl, 'GetSendSpeechTextStatuses', {
+            ...this.data, recIds
+        });
+    }
+
+    sendBulkSpeechText(title, body, receivers, DateToSend, RepeatCount) {
+        return this.execute(this.scheduleUrl, 'SendBulkSpeechText', {
+            ...this.data, title, body, receivers, DateToSend, RepeatCount
+        });
+    }
+
+    sendBulkVoiceSMS(title, voiceFileId, receivers, DateToSend, repeatCount) {
+        return this.execute(this.scheduleUrl, 'SendBulkVoiceSMS', {
+            ...this.data, title, voiceFileId, receivers, DateToSend, repeatCount
+        });
+    }
+
+    sendSpeechText(text, to) {
+        return this.execute(this.scheduleUrl, 'SendSpeechText', {
+            ...this.data, text, to
+        });
+    }
+
+    sendVoiceOtp(to, code) {
+        return this.execute(this.scheduleUrl, 'SendVoiceOtp', {
+            ...this.data, code, to
+        });
+    }
+
 }
 
 module.exports = Soap;
