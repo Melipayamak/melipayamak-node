@@ -9,6 +9,7 @@ class Soap extends BaseSoap {
         this.voiceUrl = this.getPath('Voice');
         this.scheduleUrl = this.getPath('Schedule');
         this.newBulksUrl = this.getPath('newbulks');
+        this.smartUrl = this.getPath('Smartsms');
     }
 
     getCredit() {
@@ -354,6 +355,30 @@ class Soap extends BaseSoap {
         });
     }
 
-}
+    getSmartSMSDeliveries(Id) {
+        return this.execute(this.smartUrl, 'GetSmartSMSDeliveries', {
+            ...this.data, Id
+        });
+    }
 
+    getSmartSMSDetails(Id) {
+        return this.execute(this.smartUrl, 'GetSmartSMSDetails', {
+            ...this.data, Id
+        });
+    }
+
+    sendMultipleSmartSMS(to, text, from, fromSupportOne, fromSupportTwo) {
+        return this.execute(this.smartUrl, 'SendMultipleSmartSMS', {
+            ...this.data, to, text, from, fromSupportOne, fromSupportTwo
+        });
+    }
+    
+    sendSmartSMS(to, text, from, fromSupportOne, fromSupportTwo) {
+        return this.execute(this.smartUrl, 'SendSmartSMS', {
+            ...this.data, to, text, from, fromSupportOne, fromSupportTwo
+        });
+    }
+    
+
+}
 module.exports = Soap;
