@@ -27,7 +27,7 @@ class Soap extends BaseSoap {
 
     send(_to, from, text, isflash = false) {
         let funcName = Array.isArray(_to) ? "SendSimpleSMS" : "SendSimpleSMS2";
-        var to = Array.isArray(_to) ? [{'string': _to}] : _to;
+        var to = Array.isArray(_to) ? [{ 'string': _to }] : _to;
         return this.execute(this.sendUrl, funcName, {
             ...this.data,
             to,
@@ -39,7 +39,7 @@ class Soap extends BaseSoap {
 
     send2(_to, from, text, isflash = false, udh = "") {
         //_to is array
-        var to = [{'string': _to}];
+        var to = [{ 'string': _to }];
         return this.execute(this.sendUrl, "SendSms", {
             ...this.data,
             to,
@@ -209,7 +209,7 @@ class Soap extends BaseSoap {
             scheduleId
         });
     }
-    
+
     addUsance(to, from, text, isflash, scheduleStartDateTime, repeatAfterDays, scheduleEndDateTime) {
         return this.execute(this.scheduleUrl, "AddUsance", {
             ...this.data,
@@ -222,6 +222,33 @@ class Soap extends BaseSoap {
             scheduleEndDateTime
         });
     }
+
+
+    sendByBaseNumber3(text, to) {
+        return this.execute(this.sendUrl, 'SendByBaseNumber3', {
+            ...this.data, text, to
+        });
+    }
+
+    sendByBaseNumber4(text, to, bodyId, smsPrice) {
+        return this.execute(this.sendUrl, 'SendByBaseNumber4', {
+            ...this.data, text, to, bodyId, smsPrice
+        });
+    }
+
+    sendOtp2(to, from, code) {
+        return this.execute(this.sendUrl, 'SendOtp2', {
+            ...this.data, from, to, code
+        });
+    }
+
+    sendSms2(to, from, text, isflash, udh) {
+        return this.execute(this.sendUrl, 'SendSms2', {
+            ...this.data, from, to, text, isflash, udh
+        });
+    }
+
+    
 
 }
 

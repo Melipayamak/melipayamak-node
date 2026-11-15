@@ -222,6 +222,31 @@ class SoapAsync extends BaseSoap {
         });
     }
 
+
+    sendByBaseNumber3(text, to) {
+        return this.executeAsync(this.sendUrl, 'SendByBaseNumber3', {
+            ...this.data, text, to
+        });
+    }
+
+    sendByBaseNumber4(text, to, bodyId, smsPrice) {
+        return this.executeAsync(this.sendUrl, 'SendByBaseNumber4', {
+            ...this.data, text, to, bodyId, smsPrice
+        });
+    }
+
+    sendOtp2(to, from, code) {
+        return this.executeAsync(this.sendUrl, 'SendOtp2', {
+            ...this.data, from, to, code
+        });
+    }
+
+    sendSms2(to, from, text, isflash, udh) {
+        return this.executeAsync(this.sendUrl, 'SendSms2', {
+            ...this.data, from, to, text, isflash, udh
+        });
+    }
+
 }
 
 module.exports = SoapAsync;
