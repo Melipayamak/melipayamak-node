@@ -8,6 +8,7 @@ class SoapAsync extends BaseSoap {
         this.receiveUrl = this.getPath('receive');
         this.voiceUrl = this.getPath('Voice');
         this.scheduleUrl = this.getPath('Schedule');
+        this.newBulksUrl = this.getPath('newbulks');
     }
 
     getCredit() {
@@ -280,38 +281,75 @@ class SoapAsync extends BaseSoap {
 
 
     getSendSpeechTextStatus(recId) {
-        return this.executeAsync(this.scheduleUrl, 'GetSendSpeechTextStatus', {
+        return this.executeAsync(this.voiceUrl, 'GetSendSpeechTextStatus', {
             ...this.data, recId
         });
     }
 
     getSendSpeechTextStatuses(recIds) {
-        return this.executeAsync(this.scheduleUrl, 'GetSendSpeechTextStatuses', {
+        return this.executeAsync(this.voiceUrl, 'GetSendSpeechTextStatuses', {
             ...this.data, recIds
         });
     }
 
     sendBulkSpeechText(title, body, receivers, DateToSend, RepeatCount) {
-        return this.executeAsync(this.scheduleUrl, 'SendBulkSpeechText', {
+        return this.executeAsync(this.voiceUrl, 'SendBulkSpeechText', {
             ...this.data, title, body, receivers, DateToSend, RepeatCount
         });
     }
 
     sendBulkVoiceSMS(title, voiceFileId, receivers, DateToSend, repeatCount) {
-        return this.executeAsync(this.scheduleUrl, 'SendBulkVoiceSMS', {
+        return this.executeAsync(this.voiceUrl, 'SendBulkVoiceSMS', {
             ...this.data, title, voiceFileId, receivers, DateToSend, repeatCount
         });
     }
 
     sendSpeechText(text, to) {
-        return this.executeAsync(this.scheduleUrl, 'SendSpeechText', {
+        return this.executeAsync(this.voiceUrl, 'SendSpeechText', {
             ...this.data, text, to
         });
     }
 
     sendVoiceOtp(to, code) {
-        return this.executeAsync(this.scheduleUrl, 'SendVoiceOtp', {
+        return this.executeAsync(this.voiceUrl, 'SendVoiceOtp', {
             ...this.data, code, to
+        });
+    }
+
+
+    addNumberBulk(from, title, message, receivers, DateToSend) {
+        return this.executeAsync(this.newBulksUrl, 'AddNumberBulk', {
+            ...this.data, from, title, message, receivers, DateToSend
+        });
+    }
+
+    addNumberBulk2(from, body, to) {
+        return this.executeAsync(this.newBulksUrl, 'AddNumberBulk2', {
+            ...this.data, from, body, to
+        });
+    }
+
+    getBulkDeliveries(recIds) {
+        return this.executeAsync(this.newBulksUrl, 'GetBulkDeliveries', {
+            ...this.data, recIds
+        });
+    }
+
+    getBulkDeliveries2(recId) {
+        return this.executeAsync(this.newBulksUrl, 'GetBulkDeliveries2', {
+            ...this.data, recId
+        });
+    }
+
+    getBulkDetails(bulkdId) {
+        return this.executeAsync(this.newBulksUrl, 'GetBulkDetails', {
+            ...this.data, recIbulkdIdd
+        });
+    }
+
+    sendSmsToContact(message, title, from, groupId, dateToSend) {
+        return this.executeAsync(this.newBulksUrl, 'SendSmsToContact', {
+            ...this.data, message, title, from, groupId, dateToSend
         });
     }
 
