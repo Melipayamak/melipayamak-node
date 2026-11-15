@@ -10,6 +10,7 @@ class Soap extends BaseSoap {
         this.scheduleUrl = this.getPath('Schedule');
         this.newBulksUrl = this.getPath('newbulks');
         this.smartUrl = this.getPath('Smartsms');
+        this.blacklistUrl = this.getPath('blacklist');
     }
 
     getCredit() {
@@ -380,5 +381,22 @@ class Soap extends BaseSoap {
     }
     
 
+    addBlackList(number, type) {
+        return this.execute(this.blacklistUrl, 'AddBlackList', {
+            ...this.data, number, type
+        });
+    }
+
+    addMobile(listId, type, mobileNumbers, addBySms) {
+        return this.execute(this.blacklistUrl, 'AddMobile', {
+            ...this.data, listId, type, mobileNumbers, addBySms
+        });
+    }
+
+    getBlackLists() {
+        return this.execute(this.blacklistUrl, 'GetBlackLists', {
+            ...this.data
+        });
+    }
 }
 module.exports = Soap;

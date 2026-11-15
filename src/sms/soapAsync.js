@@ -10,6 +10,7 @@ class SoapAsync extends BaseSoap {
         this.scheduleUrl = this.getPath('Schedule');
         this.newBulksUrl = this.getPath('newbulks');
         this.smartUrl = this.getPath('Smartsms');
+        this.blacklistUrl = this.getPath('blacklist');
     }
 
     getCredit() {
@@ -376,6 +377,25 @@ class SoapAsync extends BaseSoap {
     sendSmartSMS(to, text, from, fromSupportOne, fromSupportTwo) {
         return this.executeAsync(this.smartUrl, 'SendSmartSMS', {
             ...this.data, to, text, from, fromSupportOne, fromSupportTwo
+        });
+    }
+
+
+    addBlackList(number, type) {
+        return this.executeAsync(this.blacklistUrl, 'AddBlackList', {
+            ...this.data, number, type
+        });
+    }
+
+    addMobile(listId, type, mobileNumbers, addBySms) {
+        return this.executeAsync(this.blacklistUrl, 'AddMobile', {
+            ...this.data, listId, type, mobileNumbers, addBySms
+        });
+    }
+
+    getBlackLists() {
+        return this.executeAsync(this.blacklistUrl, 'GetBlackLists', {
+            ...this.data
         });
     }
 }
