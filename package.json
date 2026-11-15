@@ -1,6 +1,6 @@
 {
   "name": "melipayamak",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Melipayamak Nodejs Wrapper",
   "main": "./index.js",
   "scripts": {
