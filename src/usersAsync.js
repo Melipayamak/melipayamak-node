@@ -111,5 +111,17 @@ class UsersAsync extends BaseSoap {
             text
         });
     }
+
+    getEnExpireDate() {
+        return this.execute('GetEnExpireDate', {
+            ...this.data
+        });
+    }
+
+    getUserCredit2() {
+        return this.execute('GetUserCredit2', {
+            ...this.data
+        });
+    }
 }
 module.exports = UsersAsync;
