@@ -255,6 +255,30 @@ class Soap extends BaseSoap {
     }
     
 
+    addNewUsance(to, from, text, isflash, scheduleStartDateTime, countrepeat, scheduleEndDateTime, periodType) {
+        return this.execute(this.scheduleUrl, 'AddNewUsance', {
+            ...this.data, to, from, text, isflash, scheduleStartDateTime, countrepeat, scheduleEndDateTime, periodType
+        });
+    }
+
+    addScheduleSendByBaseNumber2(text, to, bodyId, scheduleDate) {
+        return this.execute(this.scheduleUrl, 'AddScheduleSendByBaseNumber2', {
+            ...this.data, text, to, bodyId, scheduleDate
+        });
+    }
+
+    getScheduleDetails(scheduleId) {
+        return this.execute(this.scheduleUrl, 'GetScheduleDetails', {
+            ...this.data, scheduleId
+        });
+    }
+
+    removeScheduleList(scheduleIdList) {
+        return this.execute(this.scheduleUrl, 'RemoveScheduleList', {
+            ...this.data, scheduleIdList
+        });
+    }
+
 }
 
 module.exports = Soap;

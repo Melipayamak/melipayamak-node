@@ -253,6 +253,31 @@ class SoapAsync extends BaseSoap {
         });
     }
 
+
+    addNewUsance(to, from, text, isflash, scheduleStartDateTime, countrepeat, scheduleEndDateTime, periodType) {
+        return this.executeAsync(this.scheduleUrl, 'AddNewUsance', {
+            ...this.data, to, from, text, isflash, scheduleStartDateTime, countrepeat, scheduleEndDateTime, periodType
+        });
+    }
+
+    addScheduleSendByBaseNumber2(text, to, bodyId, scheduleDate) {
+        return this.executeAsync(this.scheduleUrl, 'AddScheduleSendByBaseNumber2', {
+            ...this.data, text, to, bodyId, scheduleDate
+        });
+    }
+
+    getScheduleDetails(scheduleId) {
+        return this.executeAsync(this.scheduleUrl, 'GetScheduleDetails', {
+            ...this.data, scheduleId
+        });
+    }
+
+    removeScheduleList(scheduleIdList) {
+        return this.executeAsync(this.scheduleUrl, 'RemoveScheduleList', {
+            ...this.data, scheduleIdList
+        });
+    }
+
 }
 
 module.exports = SoapAsync;
